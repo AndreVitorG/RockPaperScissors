@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>RockPaperScissors</title>
+    </head>
+    <body>
+        <script>
+            let lista = ["Rock","Paper", "Scissors"];
+            let playerSelection = window.prompt("--Type your choice--");
+
+            let computerSelection = function(){
+                let len = lista.length;
+                return (lista[Math.floor(Math.random()*len)]).toLowerCase();
+            }
+
+            gameFunction(playerSelection, computerSelection);
+
+            function gameFunction(playerSelection, computerSelection){
+
+
+                if(playerSelection === computerSelection){
+                    return alert("It's a tie!");} 
+                else if(playerSelection === "rock" && computerSelection === "Paper"){
+                    return alert("You Lose! Paper beats Rock");}
+                else if(playerSelection === "rock" && computerSelection === "Scissors"){
+                    return alert("You Win! Rock beats Scissors");}
+                else if(playerSelection === "paper" && computerSelection === "Rock"){
+                    return alert("You Win! Paper beats Rock");}
+                else if(playerSelection === "paper" && computerSelection === "Scissors"){
+                    return alert("You Lose! Scissors beats Paper");}
+                else if(playerSelection === "scissors" && computerSelection === "Paper"){
+                    return alert("You Win! Scissors beats Paper");}
+                else if(playerSelection === "scissors" && computerSelection === "Rock"){
+                    return alert("You Lose! Rock beats Scissors");}
+                else{
+                    alert("invalido");
+                }
+            }
+        </script>
+    </body>
+</html>

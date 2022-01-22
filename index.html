@@ -7,34 +7,60 @@
     <body>
         <script>
             let lista = ["Rock","Paper", "Scissors"];
-            let playerSelection = window.prompt("--Type your choice--");
+            let playerScore = 5;
+            let computerScore = 5;
 
-            let computerSelection = function(){
+            function computerPlay(){
                 let len = lista.length;
                 return (lista[Math.floor(Math.random()*len)]).toLowerCase();
             }
 
-            gameFunction(playerSelection, computerSelection);
+            while(computerScore!=0||playerScore)
+                gameFunction(playerScore, computerScore);
 
-            function gameFunction(playerSelection, computerSelection){
+            function gameFunction(playerScore, computerScore){
+                let playerSelection = (window.prompt("--Type your choice--").toLowerCase());
 
+                let computer = computerPlay();
 
-                if(playerSelection === computerSelection){
-                    return alert("It's a tie!");} 
-                else if(playerSelection === "rock" && computerSelection === "Paper"){
-                    return alert("You Lose! Paper beats Rock");}
-                else if(playerSelection === "rock" && computerSelection === "Scissors"){
-                    return alert("You Win! Rock beats Scissors");}
-                else if(playerSelection === "paper" && computerSelection === "Rock"){
-                    return alert("You Win! Paper beats Rock");}
-                else if(playerSelection === "paper" && computerSelection === "Scissors"){
-                    return alert("You Lose! Scissors beats Paper");}
-                else if(playerSelection === "scissors" && computerSelection === "Paper"){
-                    return alert("You Win! Scissors beats Paper");}
-                else if(playerSelection === "scissors" && computerSelection === "Rock"){
-                    return alert("You Lose! Rock beats Scissors");}
-                else{
-                    alert("invalido");
+                let mix = playerSelection + computer;
+
+                switch (mix){
+                    case "rockrock":
+                        alert(`It's a tie! \nYour score is: ${playerScore}`);
+                        break;
+                    case "rockpaper":
+                        playerScore--;
+                        alert(`You Lose, Paper beats Rock! \nYour score is: ${playerScore}`);
+                        break;
+                    case "rockscissors":
+                        computerScore--;
+                        alert(`You Win, Rock beats Scissors! \nYour score is: ${playerScore}`);
+                        break;
+                    case "paperrock":
+                        computerScore--;
+                        alert(`You Win, Paper beats Rock! \nYour score is: ${playerScore}`);
+                        break;
+                    case "paperpaper":
+                        alert(`It's a tie! \nYour score is: ${playerScore}`);
+                        break;
+                    case "paperscissors":
+                        playerScore--;
+                        alert(`You Lose, Scissors beats Paper! \nYour score is: ${playerScore}`);
+                        break;
+                    case "scissorsrock":
+                        playerScore--;
+                        alert(`You Lose, Rock beats Scissors! \nYour score is: ${playerScore}`);
+                        break;
+                    case "scissorspaper":
+                        computerScore--;
+                        alert(`You Win, Scissors beats Paper! \nYour score is: ${playerScore}`);
+                        break;
+                    case "scissorsscissors":
+                        alert(`It's a tie! \nYour score is: ${playerScore}`);
+                        break;
+                    default:
+                        alert("INVALID");
                 }
             }
         </script>
